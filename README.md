@@ -57,8 +57,8 @@ K4-L3B-DAY12-<HoVaTen>-<MSSV>-<TenBai>
 
 | Học viên | Tên repo |
 |----------|----------|
-| L3B202600280 — Nguyễn Văn An | `K4-L3B-DAY12-NguyenVanAn-L3B202600280-CloudServicesAndDeployment` |
-| L3B202601111 — Trần Thị Bích Hà | `K4-L3B-DAY12-TranThiBichHa-L3B202601111-CloudServicesAndDeployment` |
+| 2A202602506 Nguyễn Mạnh Tiến | `K4-L3B-DAY12-NguyenManhTien-2A202602506-CloudServicesAndDeployment` |
+
 
 **Sai tên repo = trừ 5 điểm.** Đây là cách duy nhất để Lab Coach biết bài của ai
 trong khoảng 1000 repo.

@@ -10,17 +10,17 @@
 
 | Mục | Nội dung |
 |-----|----------|
-| Họ và tên | (điền họ tên) |
-| Mã học viên | (điền mã học viên) |
-| Repo | (điền link repo K4-L3B-DAY12-HoVaTen-MSSV-CloudServicesAndDeployment) |
+| Họ và tên | Nguyễn Mạnh Tiến |
+| Mã học viên | 2A202602506 |
+| Repo | https://github.com/neitznguyen369/K4-L3B-DAY12-NguyenManhTien-2A202602506-CloudServicesAndDeployment |
 
 ## Service
 
 | Mục | Nội dung |
 |-----|----------|
-| Public URL | https://TODO-thay-bang-url-that.up.railway.app |
-| Platform | Railway / Render / Cloud Run — (điền platform bạn dùng) |
-| Ngày deploy | (điền ngày) |
+| Public URL | https://k4-l3b-day12-nguyenmanhtien-2a202602506-cloudser-production.up.railway.app |
+| Platform | Railway  |
+| Ngày deploy |  |
 
 ## Biến Môi Trường Đã Set Trên Cloud
 
@@ -42,10 +42,33 @@ Thay `<URL>` bằng Public URL ở trên:
 ```bash
 # 1. Liveness — mong đợi 200 {"status":"ok"}
 curl -i <URL>/health
+PS C:\Users\Admin\Desktop\AI_VIN\Day12\Codelab\K4-L3B-DAY12-NguyenManhTien-2A202602506-CloudServicesAndDeployment> curl.exe -i https://k4-l3b-day12-nguyenmanhtien-2a202602506-cloudser-production.up.railway.app/health
+HTTP/1.1 200 OK
+Content-Type: application/json
+Date: Fri, 02 Oct 2026 09:38:38 GMT
+Server: railway-hikari
+x-railway-request-id: 3ZFSERWYQBilXrMd0_TJvA
+Content-Length: 57
+x-hikari-trace: sin1.d1nj
+x-railway-edge: sin1
+Connection: keep-alive
 
+{"status":"ok","service":"day12-agent","version":"1.0.0"}
 # 2. Readiness — mong đợi 200 {"status":"ready"} (đã nối được Redis)
 curl -i <URL>/ready
+(.venv) PS C:\Users\Admin\Desktop\AI_VIN\Day12\Codelab\K4-L3B-DAY12-NguyenManhTien-2A202602506-CloudServicesAndDeployment> curl.exe -i https://k4-l3b-day12-nguyenmanhtien-2a202602506-cloudser-production.up.railway.app/ready 
+HTTP/1.1 200 OK
+Content-Type: application/json
+Date: Fri, 02 Oct 2026 09:39:16 GMT
+Server: railway-hikari
+x-railway-request-id: 5Ri5Xay5QZ6uCfwWnPRhug
+Content-Length: 31
+x-hikari-trace: sin1.462z
+x-railway-edge: sin1
+Connection: keep-alive
 
+{"status":"ready","redis":true}
+(.venv) PS C:\Users\Admin\Desktop\AI_VIN\Day12\Codelab\K4-L3B-DAY12-NguyenManhTien-2A202602506-CloudServicesAndDeployment> 
 # 3. Không có API key — mong đợi 401
 curl -i -X POST <URL>/ask \
   -H "Content-Type: application/json" \
