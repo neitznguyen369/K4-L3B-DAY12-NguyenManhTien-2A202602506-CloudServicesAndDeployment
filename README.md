@@ -1,5 +1,12 @@
 # K4 — Level 3B, Ngày 12: Hạ Tầng Cloud & Deployment (240 phút)
 
+[![CI](https://github.com/neitznguyen/K4-L3B-DAY12-NguyenManhTien-2A202602506-CloudServicesAndDeployment/actions/workflows/ci.yml/badge.svg)](https://github.com/neitznguyen/K4-L3B-DAY12-NguyenManhTien-2A202602506-CloudServicesAndDeployment/actions/workflows/ci.yml)
+
+Để bật job deploy trong GitHub Actions, thêm repository secret `RAILWAY_TOKEN`
+và repository variables `RAILWAY_PROJECT_ID`, `RAILWAY_ENVIRONMENT`,
+`RAILWAY_SERVICE`, `PUBLIC_URL` trong **Settings → Secrets and variables →
+Actions**. `PUBLIC_URL` là URL công khai của service, không kèm dấu `/` cuối.
+
 Đưa một AI agent từ `localhost:8000` lên một địa chỉ công khai mà người khác
 gọi được, có bảo mật, có giới hạn chi phí, và không sập khi bạn deploy bản mới.
 
