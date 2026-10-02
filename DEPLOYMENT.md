@@ -40,6 +40,7 @@ Ghi tên biến và **nguồn giá trị**, không ghi giá trị:
 Thay `<URL>` bằng Public URL ở trên:
 
 ```bash
+
 # 1. Liveness — mong đợi 200 {"status":"ok"}
 curl -i <URL>/health
 PS C:\Users\Admin\Desktop\AI_VIN\Day12\Codelab\K4-L3B-DAY12-NguyenManhTien-2A202602506-CloudServicesAndDeployment> curl.exe -i https://k4-l3b-day12-nguyenmanhtien-2a202602506-cloudser-production.up.railway.app/health
@@ -54,6 +55,8 @@ x-railway-edge: sin1
 Connection: keep-alive
 
 {"status":"ok","service":"day12-agent","version":"1.0.0"}
+
+
 # 2. Readiness — mong đợi 200 {"status":"ready"} (đã nối được Redis)
 curl -i <URL>/ready
 (.venv) PS C:\Users\Admin\Desktop\AI_VIN\Day12\Codelab\K4-L3B-DAY12-NguyenManhTien-2A202602506-CloudServicesAndDeployment> curl.exe -i https://k4-l3b-day12-nguyenmanhtien-2a202602506-cloudser-production.up.railway.app/ready 
@@ -69,10 +72,20 @@ Connection: keep-alive
 
 {"status":"ready","redis":true}
 (.venv) PS C:\Users\Admin\Desktop\AI_VIN\Day12\Codelab\K4-L3B-DAY12-NguyenManhTien-2A202602506-CloudServicesAndDeployment> 
+
+
+
 # 3. Không có API key — mong đợi 401
 curl -i -X POST <URL>/ask \
   -H "Content-Type: application/json" \
   -d '{"question":"Hello"}'
+PS C:\Users\Admin\Desktop\AI_VIN\Day12\Codelab\K4-L3B-DAY12-NguyenManhTien-2A202602506-CloudServicesAndDeployment> curl.exe -i -X POST https://k4-l3b-day12-nguyenmanhtien-2a202602506-cloudser-production.up.railway.app/ask \                         
+>>   -H "Content-Type: application/json" \
+>>   -d '{"question":"Hello"}'
+HTTP/1.1 401 Unauthorized
+
+
+
 
 # 4. Có API key — mong đợi 200 kèm câu trả lời
 curl -i -X POST <URL>/ask \
@@ -80,6 +93,22 @@ curl -i -X POST <URL>/ask \
   -H "X-API-Key: $AGENT_API_KEY" \
   -H "X-User-Id: sv-test" \
   -d '{"question":"Deploy là gì?"}'
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+Date: Fri, 02 Oct 2026 10:37:42 GMT
+Server: railway-hikari
+x-railway-request-id: rYYu2twxQ7q6zqPW-_9nXA
+Content-Length: 279
+x-hikari-trace: sin1.98a6
+x-railway-edge: sin1
+vary: accept-encoding
+Connection: keep-alive
+
+{"answer":"Câu hỏi hay. Deploy là gì thường được giải quyết bằng cách chuẩn hóa môi trường chạy: cùng một image chạy giống nhau ở laptop và trên cloud.","user_id":"sv-test","history_length":0,"cost_usd":2.145e-05,"tokens":{"in":3,"out":35}}
+
+
+
 
 # 5. Rate limit — gọi 15 lần, những lần cuối phải trả 429
 for i in $(seq 1 15); do
@@ -94,11 +123,11 @@ done; echo
 ## Kết Quả Chạy Thật
 
 Dán output của các lệnh trên vào đây:
-
+(.venv) PS C:\Users\Admin\Desktop\AI_VIN\Day12\Codelab\K4-L3B-DAY12-NguyenManhTien-2A202602506-CloudServicesAndDeployment> 1..15 | ForEach-Object { curl.exe -s -o NUL -w "%{http_code} " -X POST "https://k4-l3b-day12-nguyenmanhtien-2a202602506-cloudser-production.up.railway.app/ask" -H "Content-Type: application/json" -H "X-API-Key: $env:AGENT_API_KEY" -H "X-User-Id: sv-test" --data-binary "@body.json" }; Write-Host
+200 200 200 200 200 200 200 200 200 200 429 429 429 429 429 
 ```
 (điền output)
 ```
-
 ## Ảnh Chụp Màn Hình
 
 Đặt ảnh trong thư mục `screenshots/`:

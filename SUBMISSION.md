@@ -16,7 +16,7 @@ K4-L3B-DAY12-<HoVaTen>-<MSSV>-<TenBai>
 Với bài lab này, dùng `TenBai` là `CloudServicesAndDeployment`:
 
 ```text
-K4-L3B-DAY12-NguyenVanAn-L3B202600280-CloudServicesAndDeployment
+K4-L3B-DAY12-NguyenManhTien-2A202602506-CloudServicesAndDeployment
 ```
 
 Quy tắc đặt tên:
